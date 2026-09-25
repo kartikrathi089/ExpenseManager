@@ -1,0 +1,38 @@
+package com.expense.service.dto;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
+import tools.jackson.databind.PropertyNamingStrategy;
+import tools.jackson.databind.annotation.JsonNaming;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ExpenseDto {
+
+    private String externalId;
+
+    @JsonProperty(value = "amount")
+    @NonNull
+    private BigDecimal amount;
+
+    @JsonProperty(value = "user_id")
+    private String userId;
+
+    @JsonProperty(value = "merchant")
+    private String merchant;
+
+    @JsonProperty(value = "currency")
+    private String currency;
+
+    @JsonProperty(value = "created_at")
+    private Timestamp createdAt;
+}
